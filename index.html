@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UNIV PUB FESTIVAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@100;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #09090b; /* 트렌디한 깊은 블랙 (Zinc-950) */
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 스크롤바 숨기기 및 바운스 효과 */
+        ::-webkit-scrollbar { display: none; }
+        .bouncing { transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1); }
+        .bouncing:active { transform: scale(0.96); }
+
+        /* 다크 글래스모피즘 효과 */
+        .glass-nav {
+            background: rgba(9, 9, 11, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        /* 바텀 시트 애니메이션 */
+        .bottom-sheet {
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .bottom-sheet.active { transform: translateY(0); }
+
+        /* 트렌디한 네온 그라데이션 텍스트 */
+        .grad-text {
+            background: linear-gradient(135deg, #22d3ee 0%, #d946ef 100%); /* Cyan to Fuchsia */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 텍스트 글로우 효과 */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500/30 pb-32">
+
+    <header class="glass-nav sticky top-0 z-[60] px-6 py-5 flex justify-between items-center border-b border-white/10">
+        <div class="flex flex-col">
+            <h1 class="text-2xl font-[900] tracking-tighter grad-text">UNIV.PUB</h1>
+        </div>
+        <div class="flex items-center gap-2 bg-white/10 border border-white/10 text-white px-4 py-2 rounded-full shadow-lg">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span class="text-[11px] font-black tracking-widest uppercase opacity-80">Table</span>
+            <span class="text-sm font-black italic text-cyan-400" id="table-id">03</span>
+        </div>
+    </header>
+
+    <main class="max-w-xl mx-auto px-6 py-8 space-y-10">
+        
+        <section class="space-y-3 mt-2">
+            <div class="inline-block bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full mb-1">
+                <p class="text-cyan-400 font-bold text-[10px] tracking-widest uppercase"><i class="fa-solid fa-fire mr-1"></i> 2026 Festival Live</p>
+            </div>
+            <h2 class="text-3xl font-[900] text-white leading-[1.3] tracking-tight">
+                오늘 밤을 불태울<br>
+                <span class="grad-text glow-text">시그니처 안주</span>입니다.
+            </h2>
+        </section>
+
+        <section class="space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+                <h3 class="text-[11px] font-black text-zinc-500 uppercase tracking-widest italic">Best Menu</h3>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <div onclick="addToCart('직화 무뼈 닭발', 17000, '🌶️')" class="bouncing bg-white/5 border border-white/10 rounded-[28px] p-4 cursor-pointer flex justify-between items-center hover:bg-white/10 active:bg-white/20 transition-colors">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-16 h-16 bg-white/10 rounded-[20px] flex items-center justify-center text-3xl shadow-sm">🌶️</div>
+                        <div>
+                            <h4 class="text-lg font-black text-white">직화 무뼈 닭발</h4>
+                            <p class="text-xs text-zinc-400 font-medium mt-0.5">소주가 술술 들어가는 매운맛</p>
+                            <p class="text-cyan-400 font-black mt-1.5 text-base">17,000원</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-cyan-400 flex items-center justify-center text-black shadow-[0_0_15px_rgba(34,211,238,0.3)] shrink-0">
+                        <i class="fa-solid fa-plus text-sm font-black"></i>
+                    </div>
+                </div>
+
+                <div onclick="addToCart('바삭 해물파전', 15000, '🍤')" class="bouncing bg-white/5 border border-white/10 rounded-[28px] p-4 cursor-pointer flex justify-between items-center hover:bg-white/10 active:bg-white/20 transition-colors">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-16 h-16 bg-white/10 rounded-[20px] flex items-center justify-center text-3xl shadow-sm">🍤</div>
+                        <div>
+                            <h4 class="text-lg font-black text-white">바삭 해물파전</h4>
+                            <p class="text-xs text-zinc-400 font-medium mt-0.5">비 오는 날, 막걸리엔 필수</p>
+                            <p class="text-cyan-400 font-black mt-1.5 text-base">15,000원</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-cyan-400 flex items-center justify-center text-black shadow-[0_0_15px_rgba(34,211,238,0.3)] shrink-0">
+                        <i class="fa-solid fa-plus text-sm font-black"></i>
+                    </div>
+                </div>
+
+                <div onclick="addToCart('얼큰 꼬치 오뎅탕', 12000, '🍲')" class="bouncing bg-white/5 border border-white/10 rounded-[28px] p-4 cursor-pointer flex justify-between items-center hover:bg-white/10 active:bg-white/20 transition-colors">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-16 h-16 bg-white/10 rounded-[20px] flex items-center justify-center text-3xl shadow-sm">🍲</div>
+                        <div>
+                            <h4 class="text-lg font-black text-white">얼큰 꼬치 오뎅탕</h4>
+                            <p class="text-xs text-zinc-400 font-medium mt-0.5">청양고추를 넣어 칼칼한 국물</p>
+                            <p class="text-cyan-400 font-black mt-1.5 text-base">12,000원</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-cyan-400 flex items-center justify-center text-black shadow-[0_0_15px_rgba(34,211,238,0.3)] shrink-0">
+                        <i class="fa-solid fa-plus text-sm font-black"></i>
+                    </div>
+                </div>
+                
+                <div onclick="addToCart('파인애플 샤베트', 8000, '🍍')" class="bouncing bg-white/5 border border-white/10 rounded-[28px] p-4 cursor-pointer flex justify-between items-center hover:bg-white/10 active:bg-white/20 transition-colors">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-16 h-16 bg-white/10 rounded-[20px] flex items-center justify-center text-3xl shadow-sm">🍍</div>
+                        <div>
+                            <h4 class="text-lg font-black text-white">파인애플 샤베트</h4>
+                            <p class="text-xs text-zinc-400 font-medium mt-0.5">입가심으로 완벽한 시원함</p>
+                            <p class="text-cyan-400 font-black mt-1.5 text-base">8,000원</p>
+                        </div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-cyan-400 flex items-center justify-center text-black shadow-[0_0_15px_rgba(34,211,238,0.3)] shrink-0">
+                        <i class="fa-solid fa-plus text-sm font-black"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="cart-footer" class="fixed bottom-0 left-0 right-0 z-[70] p-6 pb-8 pointer-events-none opacity-0 translate-y-10 transition-all duration-300">
+        <div class="max-w-xl mx-auto bg-[#18181b] border border-white/10 text-white rounded-[28px] p-4 flex items-center justify-between shadow-[0_0_40px_rgba(34,211,238,0.15)] pointer-events-auto">
+            <div class="pl-3">
+                <p class="text-[10px] font-black text-cyan-400 uppercase tracking-widest mb-0.5"><span id="cart-count">0</span> Items</p>
+                <div class="flex items-baseline gap-1">
+                    <span id="cart-total" class="text-2xl font-black tracking-tight text-white">0</span>
+                    <span class="text-sm font-bold text-zinc-500">원</span>
+                </div>
+            </div>
+            <button onclick="toggleSheet(true)" class="bg-cyan-400 hover:bg-cyan-300 text-black px-7 py-3.5 rounded-[20px] font-black text-[15px] transition-all active:scale-95 flex items-center gap-2">
+                주문하기 <i class="fa-solid fa-arrow-right text-xs opacity-60"></i>
+            </button>
+        </div>
+    </footer>
+
+    <div id="overlay" onclick="toggleSheet(false)" class="fixed inset-0 bg-black/60 z-[80] hidden backdrop-blur-sm transition-opacity duration-300"></div>
+    
+    <div id="sheet-order" class="bottom-sheet fixed bottom-0 left-0 right-0 z-[90] bg-[#18181b] border-t border-white/10 rounded-t-[40px] p-8 space-y-6 max-w-xl mx-auto shadow-2xl">
+        <div class="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-2"></div>
+        
+        <header class="text-center space-y-1 pb-2">
+            <h3 class="text-2xl font-[900] tracking-tight text-white">결제 정보를 입력해 주세요</h3>
+            <p class="text-xs text-zinc-400 font-medium">입금 확인 즉시 주방에서 조리가 시작됩니다.</p>
+        </header>
+
+        <div class="space-y-4">
+            <div class="bg-black/50 p-5 rounded-[24px] flex justify-between items-center border border-white/5">
+                <span class="text-sm font-bold text-zinc-400" id="summary-text">주문 내역</span>
+                <span class="text-lg font-black text-cyan-400" id="summary-price">0원</span>
+            </div>
+
+            <div class="space-y-1.5">
+                <label class="text-[11px] font-black text-zinc-500 uppercase tracking-widest ml-2">입금자 성함 (실명)</label>
+                <input type="text" id="sender-name" placeholder="예: 홍길동" class="w-full bg-black/50 border border-white/10 text-white p-4 rounded-[20px] font-black text-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none transition-all placeholder:text-zinc-600">
+            </div>
+
+            <div class="bg-cyan-500/10 border border-cyan-500/30 p-5 rounded-[24px] relative overflow-hidden flex items-center justify-between">
+                <div class="relative z-10">
+                    <span class="text-[10px] font-black text-cyan-300 uppercase tracking-widest block mb-1">우리은행 (학생회)</span>
+                    <p class="text-lg font-black text-cyan-400 tracking-tight">1002-458-920044</p>
+                    <p class="text-[11px] font-bold text-cyan-200 opacity-80 mt-0.5">예금주: 박범준</p>
+                </div>
+                <div class="text-4xl opacity-20 relative z-10">🏦</div>
+                
+                <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-cyan-500/20 blur-3xl rounded-full pointer-events-none"></div>
+            </div>
+        </div>
+
+        <button onclick="finalOrder()" class="w-full bg-cyan-400 text-black py-5 rounded-[24px] font-[900] text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)] active:scale-[0.97] transition-all flex items-center justify-center gap-2 mt-4">
+            <img src="https://static.toss.im/icons/png/4x/icon-toss-logo.png" alt="toss" class="h-4">
+            토스로 송금하고 주문하기
+        </button>
+        
+        <button onclick="toggleSheet(false)" class="w-full py-3 text-sm font-bold text-zinc-500 hover:text-white transition-colors">취소</button>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAGOQBwgckWLmEyFGrJGOzxHBS40Ek72Ns",
+            authDomain: "univ-pub-project.firebaseapp.com",
+            databaseURL: "https://univ-pub-project-default-rtdb.firebaseio.com",
+            projectId: "univ-pub-project",
+            storageBucket: "univ-pub-project.firebasestorage.app",
+            messagingSenderId: "828116319670",
+            appId: "1:828116319670:web:7af97e8645db038e6f9517",
+            measurementId: "G-WHSYQ25Q2C"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // 기존 자바스크립트에서 호출할 수 있도록 window에 함수 할당
+        window.saveOrderToFirebase = function(orderData) {
+            push(ref(db, 'orders/'), orderData);
+        };
+    </script>
+
+    <script>
+        let cart = [];
+
+        // 메뉴 장바구니에 담기
+        function addToCart(name, price, emoji) {
+            cart.push({ name, price, emoji });
+            updateCart();
+            
+            // 처음 담았을 때 플로팅 바 올리기
+            const footer = document.getElementById('cart-footer');
+            footer.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            
+            // 햅틱 느낌을 위한 시각적 피드백 (화면 살짝 깜빡임)
+            const body = document.body;
+            body.style.backgroundColor = '#18181b';
+            setTimeout(() => {
+                body.style.backgroundColor = '#09090b';
+            }, 100);
+        }
+
+        // 장바구니 UI 업데이트
+        function updateCart() {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total').innerText = total.toLocaleString();
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('summary-price').innerText = total.toLocaleString() + "원";
+            
+            const summary = cart.length > 1 ? `${cart[0].name} 외 ${cart.length - 1}건` : cart[0]?.name || "";
+            document.getElementById('summary-text').innerText = summary;
+        }
+
+        // 바텀 시트 열기/닫기
+        function toggleSheet(show) {
+            const sheet = document.getElementById('sheet-order');
+            const overlay = document.getElementById('overlay');
+            if(show) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.style.opacity = "1";
+                    sheet.classList.add('active');
+                }, 10);
+            } else {
+                sheet.classList.remove('active');
+                overlay.style.opacity = "0";
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        // 🚨 토스 앱 딥링크 송금 로직 (우리은행 박범준님 연동)
+        function finalOrder() {
+            const name = document.getElementById('sender-name').value.trim();
+            if(!name) {
+                alert("입금 확인을 위해 성함을 꼭 입력해 주세요!");
+                document.getElementById('sender-name').focus();
+                return;
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            const table = document.getElementById('table-id').innerText;
+            
+            const bankName = "우리";
+            const bankAccount = "1002458920044"; // 하이픈 제외
+            const memo = `${table}번_${name}`; // 예: 03번_홍길동
+            
+            // 🚨 Firebase에 주문 데이터 전송 로직 추가 (디자인/로직 변경 없이 덧붙임)
+            if (window.saveOrderToFirebase) {
+                try {
+                    window.saveOrderToFirebase({
+                        table: table,
+                        customer: name,
+                        items: cart,
+                        totalAmount: total,
+                        status: "pending",
+                        timestamp: new Date().toISOString()
+                    });
+                } catch(e) { console.error("Firebase 전송 오류", e); }
+            }
+            
+            // 토스 앱 다이렉트 송금 스키마 (supertoss://)
+            const tossUrl = `supertoss://send?bank=${bankName}&accountNo=${bankAccount}&originAmount=${total}&msg=${encodeURIComponent(memo)}`;
+            
+            // 안내 메시지 띄우기 (PC 브라우저에서는 딥링크가 작동안할 수 있음을 고지)
+            alert(`[주문 전송 완료]\n\n토스 앱으로 이동하여 ${total.toLocaleString()}원을 송금해 주세요.\n(휴대폰 환경에서만 토스 앱이 자동으로 열립니다.)`);
+            
+            // 모바일 앱으로 연결 (딥링크 실행)
+            window.location.href = tossUrl;
+            
+            // 송금창 띄운 후 장바구니 초기화
+            setTimeout(() => {
+                cart = [];
+                updateCart();
+                toggleSheet(false);
+                document.getElementById('cart-footer').classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                document.getElementById('sender-name').value = '';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
